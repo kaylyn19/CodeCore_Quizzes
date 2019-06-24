@@ -5,20 +5,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
     </head>
     <body>
-    <nav>
+
     <% if (username) { %>
-        <a href="/index"><img src="/image/index.jpeg" alt="" style="height:5%; width:5%"></a>  |
-        <a href="/index/new"> Cluck! </a>  | 
-        logged in as : <%= username %>  |
-        <a href="sign_out"> Sign Out </a>  
+        <nav class="nav">
+            <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
+            <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form> 
+            logged in as : <%= username %>
+            <form action="/sign_out" method=POST><button type="submit" class="btn btn-outline-dark">Sign Out</button></form>
+        </nav>
     <% } else { %>
-        <a href="/index"><img src="/image/index.jpeg" alt="" style="height:5%; width:5%"></a>  |
-        <a href="/index/new"> Cluck! </a>  | 
-        <a href="/sign_in"> Sign In </a>  
+        <nav class="nav">
+            <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
+            <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form>
+            <form action="/sign_in"><button type="submit" class="btn btn-outline-dark">Sign In</button></form>
+        </nav>
     <% } %>
-    </nav>
     <br>
     <br>
     <br>

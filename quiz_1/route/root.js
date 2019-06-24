@@ -13,11 +13,12 @@ router.get('/sign_in', (req, res) => {
 
 const COOKIE_MAX_AGE=1000 * 60 * 60 * 24 * 7; 
 router.post('/sign_in', (req, res) => {
+    // res.clearCookie('username')
     const username = req.body.username
     console.log(username)
     res.cookie('username', username, {maxAge: COOKIE_MAX_AGE})
-    res.redirect('/sign_in')
-})
+    res.redirect('/index')
+}) //clearing cookies
 
 router.post('/sign_out', (req, res) => {
     res.clearCookie('username');

@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router();
 const knex = require('../db/client')
 
-// function redirectToSignIn(req, res, next) {
-//     if(res.locals.username) {
-//         next()
-//     } else {
-//         res.render('cluckr/sign_in')
-//     }
-// }
+function redirectToSignIn(req, res, next) {
+    if(res.locals.username) {
+        next()
+    } else {
+        res.render('cluckr/sign_in')
+    }
+}
 
 
 router.get('/new', (req, res) => {
@@ -16,7 +16,11 @@ router.get('/new', (req, res) => {
 })
 
 // router.use(redirectToSignIn)
-router.post('/',(req, res) => {
+const COOKIE_MAX_AGE=1000 * 60 * 60 * 24 * 7; 
+router.post('/', redirectToSignIn, (req, res) => {
+    // const username = req.body.username
+    // res.cookie('username', username, {maxAge: COOKIE_MAX_AGE})
+
     knex('clucks')
         .insert({
             username:req.cookies.username,
@@ -27,12 +31,17 @@ router.post('/',(req, res) => {
         .then(() => {
             res.redirect('/index')
         })
-    console.log('username is', req.cookies.username)
+        // save db saving cookies
+    
+    // req.clearCookies('username')
+    // console.log('username is', req.cookies.username)
     // console.log('imageurl is ', req.body.url)
     // console.log('content', req.body.content)
 })
 
+
 router.get('/', (req, res) => {
+    console.log('req.body is ', req.body)
     knex('clucks')
         .orderBy('createdAt', "DESC")
         .then((data) => {
