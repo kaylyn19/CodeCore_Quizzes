@@ -10,18 +10,33 @@
     <body>
 
     <% if (username) { %>
-        <nav class="nav">
-            <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
-            <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form> 
-            logged in as : <%= username %>
-            <form action="/sign_out" method=POST><button type="submit" class="btn btn-outline-dark">Sign Out</button></form>
-        </nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
+            </li>
+            <li class="nav-item">
+                <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form> 
+            </li>
+            <li class="nav-item">
+                <div><button type="button" class="btn btn-light"><%= username %></button></div>
+            </li>
+            <li class="nav-item">
+                <form action="/sign_out" method=POST><button type="submit" class="btn btn-outline-dark">Sign Out</button></form>
+            </li>
+        </ul>
+
     <% } else { %>
-        <nav class="nav">
-            <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
-            <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form>
-            <form action="/sign_in"><button type="submit" class="btn btn-outline-dark">Sign In</button></form>
-        </nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
+            </li>
+            <li class="nav-item">
+                <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form>
+            </li>
+            <li class="nav-item">
+                <form action="/sign_in"><button type="submit" class="btn btn-outline-dark">Sign In</button></form>
+            </li>
+        </ul>
     <% } %>
     <br>
     <br>

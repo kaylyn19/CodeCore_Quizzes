@@ -1,11 +1,22 @@
 <%- include("../../partials/header")%>
 <form action="/index" method=POST>
-    <label for="content">Content</label>
-    <input type="text" name='content'>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Content</span>
+        </div>
+        <textarea class="form-control" name='content' aria-label="With textarea"></textarea>
+    </div>
+<br>
+<br>
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Image Url</span>
+    </div>
+    <input type="text" name:"url" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+<br>
+<br>
+<button type="submit" class="btn btn-primary">Cluck</button>
 
-    <label for="url">Image Url</label>
-    <input type="url" name="url">
-
-    <input type="submit" value="Cluck!">
 </form>
 <%- include("../../partials/footer")%>
