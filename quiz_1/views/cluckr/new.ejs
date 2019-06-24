@@ -1,22 +1,24 @@
 <%- include("../../partials/header")%>
 <form action="/index" method=POST>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Content</span>
+    <div class="card w-50">
+        <div class="card-body">
+            <h5 class="card-title">Content</h5>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Content</span>
+                </div>
+                <textarea class="form-control" name='content' aria-label="With textarea"></textarea>
+            </div>
         </div>
-        <textarea class="form-control" name='content' aria-label="With textarea"></textarea>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Image Url</span>
+                </div>
+                <input type="text" name:"url" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+        </div>
     </div>
-<br>
-<br>
-    <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon3">Image Url</span>
-    </div>
-    <input type="text" name:"url" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-    </div>
-<br>
-<br>
-<button type="submit" class="btn btn-primary">Cluck</button>
-
+    <button type="submit" class="btn btn-primary">Cluck</button>
 </form>
 <%- include("../../partials/footer")%>
