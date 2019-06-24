@@ -5,7 +5,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser');
 const knex = require('./db/client');
 const rootRouter = require('./route/root');
-const cohortRouter = require('./route/cohorts')
+const cluckrRouter = require('./route/cluckr')
 const methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
@@ -16,6 +16,15 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
 
 
+app.use((req, res, next) => {
+    res.locals.username=""
+    const username = req.cookies.username;
+    if(username) {
+        res.locals.username = username;
+    }
+    next();
+})
+
 app.use(methodOverride ((request, response) => {
     if (request.body && request.body._method) {
         const method = request.body._method
@@ -25,7 +34,7 @@ app.use(methodOverride ((request, response) => {
 )
 
 app.use('/', rootRouter);
-app.use('/cohorts', cohortRouter);
+app.use('/cluckr', cluckrRouter);
 
 const PORT = 4000
 const ADDRESS = 'localhost'
