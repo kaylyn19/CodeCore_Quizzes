@@ -1,0 +1,12 @@
+<%- include("../../partials/header")%>
+<% for (let record of data) { %>
+    <span>     
+        <img src="/image/index.jpeg" alt="" style="height:5%; width:5%">
+        <h4><%= record.username%> |  <%= record.updatedAt%></h4>
+    </span>
+    <p><%= record. content%></p>
+    <img src="<%= record.imageUrl%>" alt="userImage">
+    <br>
+    <br>
+<% } %>
+<%- include("../../partials/footer")%>

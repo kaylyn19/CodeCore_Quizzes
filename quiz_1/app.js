@@ -5,7 +5,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser');
 const knex = require('./db/client');
 const rootRouter = require('./route/root');
-const cluckrRouter = require('./route/cluckr')
+const indexRouter = require('./route/index')
 const methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
@@ -25,13 +25,13 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use((req,res, next) => {
-    if(res.locals.username) {
-        next()
-    } else {
-        res.render('/sign_in')
-    }
-})
+// function redirectToSignIn(req, res, next) {
+//     if(res.locals.username) {
+//         next()
+//     } else {
+//         res.render('cluckr/sign_in')
+//     }
+// }
 
 app.use(methodOverride ((request, response) => {
     if (request.body && request.body._method) {
@@ -42,7 +42,7 @@ app.use(methodOverride ((request, response) => {
 )
 
 app.use('/', rootRouter);
-app.use('/cluckr', cluckrRouter);
+app.use('/index', indexRouter);
 
 const PORT = 4000
 const ADDRESS = 'localhost'
