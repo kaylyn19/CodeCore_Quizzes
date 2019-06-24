@@ -8,5 +8,18 @@
     </head>
     <body>
     <nav>
-    <a href=""><img src="" alt=""></a>
+    <% if (username) { %>
+        <a href="/index"><img src="/image/index.jpeg" alt="" style="height:5%; width:5%"></a>  |
+        <a href="/index/new"> Cluck! </a>  | 
+        logged in as : <%= username %>  |
+        <a href="sign_out"> Sign Out </a>  
+    <% } else { %>
+        <a href="/index"><img src="/image/index.jpeg" alt="" style="height:5%; width:5%"></a>  |
+        <a href="/index/new"> Cluck! </a>  | 
+        <a href="/sign_in"> Sign In </a>  
+    <% } %>
     </nav>
+    <br>
+    <br>
+    <br>
+

@@ -25,24 +25,19 @@ app.use((req, res, next) => {
     next();
 })
 
-// function redirectToSignIn(req, res, next) {
-//     if(res.locals.username) {
-//         next()
-//     } else {
-//         res.render('cluckr/sign_in')
-//     }
-// }
-
-app.use(methodOverride ((request, response) => {
-    if (request.body && request.body._method) {
-        const method = request.body._method
-        return method;
+function redirectToSignIn(req, res, next) {
+    if(res.locals.username) {
+        next()
+    } else {
+        res.render('cluckr/sign_in')
     }
-})
-)
+}
 
 app.use('/', rootRouter);
 app.use('/index', indexRouter);
+
+app.use(redirectToSignIn)
+
 
 const PORT = 4000
 const ADDRESS = 'localhost'

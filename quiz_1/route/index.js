@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router();
 const knex = require('../db/client')
 
-function redirectToSignIn(req, res, next) {
-    if(res.locals.username) {
-        next()
-    } else {
-        res.render('cluckr/sign_in')
-    }
-}
+// function redirectToSignIn(req, res, next) {
+//     if(res.locals.username) {
+//         next()
+//     } else {
+//         res.render('cluckr/sign_in')
+//     }
+// }
 
 
 router.get('/new', (req, res) => {
@@ -16,7 +16,7 @@ router.get('/new', (req, res) => {
 })
 
 // router.use(redirectToSignIn)
-router.post('/', redirectToSignIn,(req, res) => {
+router.post('/',(req, res) => {
     knex('clucks')
         .insert({
             username:req.cookies.username,
@@ -27,7 +27,7 @@ router.post('/', redirectToSignIn,(req, res) => {
         .then(() => {
             res.redirect('/index')
         })
-    // console.log('username is', req.cookies.username)
+    console.log('username is', req.cookies.username)
     // console.log('imageurl is ', req.body.url)
     // console.log('content', req.body.content)
 })
