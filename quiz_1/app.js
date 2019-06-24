@@ -25,6 +25,14 @@ app.use((req, res, next) => {
     next();
 })
 
+app.use((req,res, next) => {
+    if(res.locals.username) {
+        next()
+    } else {
+        res.render('/sign_in')
+    }
+})
+
 app.use(methodOverride ((request, response) => {
     if (request.body && request.body._method) {
         const method = request.body._method
