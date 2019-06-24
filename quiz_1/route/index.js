@@ -11,16 +11,12 @@ function redirectToSignIn(req, res, next) {
 }
 
 
-router.get('/new', (req, res) => {
+router.get('/new', redirectToSignIn, (req, res) => {
     res.render('cluckr/new')
 })
 
-// router.use(redirectToSignIn)
 const COOKIE_MAX_AGE=1000 * 60 * 60 * 24 * 7; 
 router.post('/', redirectToSignIn, (req, res) => {
-    // const username = req.body.username
-    // res.cookie('username', username, {maxAge: COOKIE_MAX_AGE})
-
     knex('clucks')
         .insert({
             username:req.cookies.username,
@@ -30,10 +26,7 @@ router.post('/', redirectToSignIn, (req, res) => {
         .returning("*")
         .then(() => {
             res.redirect('/index')
-        })
-        // save db saving cookies
-    
-    // req.clearCookies('username')
+        })    
     // console.log('username is', req.cookies.username)
     // console.log('imageurl is ', req.body.url)
     // console.log('content', req.body.content)

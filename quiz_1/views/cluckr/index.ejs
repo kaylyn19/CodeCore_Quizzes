@@ -2,10 +2,17 @@
 <% for (let record of data) { %>
     <span>     
         <img src="/image/smile.png" alt="" style="height:5%; width:5%">
-        <h4><%= record.username%> |  <%= record.updatedAt%></h4>
+        <h5><%= record.username%> |  <%= record.updatedAt%></h5>
     </span>
-    <p><%= record. content%></p>
-    <img src="<%= record.imageUrl%>" alt="userImage">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <p class="card-text"><%= record. content%></p>
+        </div>
+        <img class="card-img-top" src="<%= record.imageUrl%>" alt="userImage">
+    </div>
+
+
     <br>
     <br>
 <% } %>

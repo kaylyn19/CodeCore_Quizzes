@@ -36,7 +36,7 @@ function redirectToSignIn(req, res, next) {
 app.use('/', rootRouter);
 app.use('/index', indexRouter);
 
-app.use(redirectToSignIn)
+// app.use(redirectToSignIn)
 
 
 const PORT = 4000

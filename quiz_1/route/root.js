@@ -18,7 +18,7 @@ router.post('/sign_in', (req, res) => {
     console.log(username)
     res.cookie('username', username, {maxAge: COOKIE_MAX_AGE})
     res.redirect('/index')
-}) //clearing cookies
+}) 
 
 router.post('/sign_out', (req, res) => {
     res.clearCookie('username');
