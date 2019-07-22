@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new user_params
         if @user.save
+            session[:user_id] = current_user.id
             redirect_to ideas_path, notice: "Welcome!"
         else
             render :new

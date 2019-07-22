@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :authenticate!
     def create    
         @idea = Idea.find params[:idea_id]
         @review = Review.new review_params

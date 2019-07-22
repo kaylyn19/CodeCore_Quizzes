@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
     before_action :find_id, only: [:show, :destroy, :edit, :update]
-
+    before_action :authenticate!, except: [:show, :index]
     def new
         @idea = Idea.new
     end
