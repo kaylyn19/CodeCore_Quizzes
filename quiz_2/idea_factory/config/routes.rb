@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :ideas
   resources :ideas do
@@ -8,4 +9,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
+
+  get '/', to: "home#new"
 end
