@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Like.delete_all
 Review.delete_all
 Idea.delete_all
 User.delete_all
@@ -34,9 +34,17 @@ users = User.all
                 user: users.sample
             )
         end
+
+        rand(0..20).times.map do
+            Like.create(
+                user: users.sample,
+                idea: i
+            )
+        end
     end
 end
 
 p "generated #{Idea.all.count} ideas"
 p "generated #{Review.all.count} reviews"
 p "generated #{users.count} users"
+p "generated #{Like.count} likes"

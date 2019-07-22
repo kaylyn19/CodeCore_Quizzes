@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
     before_action :find_id
+    before_action :authenticate!
     before_action :like!
 
     def create
@@ -12,9 +13,9 @@ class LikesController < ApplicationController
     end
 
     def destroy
-        @like = @idea.likes.find_by(id: current_user.id)
+        @like = @idea.likes.find_by(user_id: current_user.id)
         @like.destroy
-        redirect_to @idea
+        redirect_to @idea, notice: "Unliked"
     end
 
     private
