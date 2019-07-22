@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+10.times.each do
+    i = Idea.create(
+        title: Faker::Book.title,
+        description: Faker::ChuckNorris.fact,
+    )
+    if i.valid?
+        i.reviews = rand(0..5).times.map do
+            Review.create(
+                body: Faker::ChuckNorris.fact,
+            )
+        end
+    end
+end
+
+p "generated #{Idea.all.count} ideas"
+p "generated #{Review.all.count} reviews"

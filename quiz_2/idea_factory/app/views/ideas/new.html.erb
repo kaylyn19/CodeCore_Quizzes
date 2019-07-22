@@ -1,5 +1,13 @@
 <h1>New Idea</h1>
 
+<% if @idea.errors.any? %>
+    <ul>
+        <% @idea.errors.full_messages.each do |error|%>
+            <li><%= error%></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= form_with model: @idea, local: true do |form| %>
     <div>
         <%= form.label :title%>

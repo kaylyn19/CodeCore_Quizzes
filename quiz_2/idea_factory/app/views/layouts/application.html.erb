@@ -11,6 +11,8 @@
 
   <body>
     <%= flash[:notice] || flash[:alert]%>
+    <%= link_to "View Ideas", ideas_path%>
+    <%= link_to "New Idea", new_idea_path%>
     <%= yield %>
   </body>
 </html>
