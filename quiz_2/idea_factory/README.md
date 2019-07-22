@@ -1,24 +1,12 @@
-# README
+# Quiz 2 - Idea Factory
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Build a web app to post & discuss ideas with the following features built with Ruby on Rails:
 
-Things you may want to cover:
+* Complete CRUD actions of idea posts
+  * Only owners of the idea can delete/edit the post
+  * However, they are not permitted to like/un-like the post
 
-* Ruby version
+* Post reviews on each idea for a discussion
+  * Reviewers can only delete their own reviews
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Users must sign in to take the full advantage of the application
