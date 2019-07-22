@@ -1,5 +1,6 @@
 <% @ideas.each do |idea|%>
     <h1><%= link_to idea.title, idea_path(idea.id)%></h1>
     <p><%= idea.description%></p>
+    <p><%= idea.likers.count%> likes</p>
     <hr/>    
 <% end %>
