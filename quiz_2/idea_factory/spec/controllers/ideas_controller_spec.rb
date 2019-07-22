@@ -29,9 +29,9 @@ RSpec.describe IdeasController, type: :controller do
         end
 
         context 'with invalid params' do 
-            it 'redirects to the ideas index page' do
+            it 'renders the new idea page' do
                 post :create, params: {idea: FactoryBot.attributes_for(:idea, title:nil)}
-                expect(response).to redirect_to(ideas_path)
+                expect(response).to render_template :new
             end
 
             it 'flashes an alert message' do

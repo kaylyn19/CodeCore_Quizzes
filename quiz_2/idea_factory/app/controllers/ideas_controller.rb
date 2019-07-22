@@ -10,7 +10,7 @@ class IdeasController < ApplicationController
         if @idea.save
             redirect_to @idea, notice: "New idea submitted!"
         else
-            redirect_to ideas_path, alert: "Unable to create a new idea!"
+            render :new, alert: "Unable to create a new idea!"
         end
     end
 

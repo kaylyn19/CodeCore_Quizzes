@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
         if @review.save
             redirect_to idea_path(@review.idea_id), notice: "Thank you for the review!"
         else
-            redirect_to ideas_path, alert: "Unable to create a review! Try again."
+            render 'ideas/show', alert: "Unable to create a review! Try again."
         end
     end
 
