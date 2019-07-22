@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
     before_action :authenticate!
+
     def create    
         @idea = Idea.find params[:idea_id]
         @review = Review.new review_params
+        @review.user = current_user
         @review.idea = @idea
         if @review.save
             redirect_to idea_path(@review.idea_id), notice: "Thank you for the review!"
@@ -13,8 +15,12 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review = Review.find params[:id]
-        @review.destroy
-        redirect_to idea_path(@review.idea_id), notice: "Review deleted!"
+        if can? :crud, @review
+            @review.destroy
+            redirect_to idea_path(@review.idea_id), notice: "Review deleted!"
+        else
+            redirect_to ideas_path, alert: "Not Authorized!"
+        end
     end
 
     private
@@ -22,5 +28,4 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:body)
     end
-
 end
