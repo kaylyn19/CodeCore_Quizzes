@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+    <body>
+
+    <% if (username) { %>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
+            </li>
+            <li class="nav-item">
+                <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form> 
+            </li>
+            <li class="nav-item">
+                <div><button type="button" class="btn btn-light"><%= username %></button></div>
+            </li>
+            <li class="nav-item">
+                <form action="/sign_out" method=POST><button type="submit" class="btn btn-outline-dark">Sign Out</button></form>
+            </li>
+        </ul>
+
+    <% } else { %>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="/index"><img src="/image/index.jpeg" alt="" style="height:90%; width:50%"></a> 
+            </li>
+            <li class="nav-item">
+                <form action="/index/new" ><button type="submit" class="btn btn-outline-dark">Cluck!</button></form>
+            </li>
+            <li class="nav-item">
+                <form action="/sign_in"><button type="submit" class="btn btn-outline-dark">Sign In</button></form>
+            </li>
+        </ul>
+    <% } %>
+    <br>
+    <br>
+    <br>
+

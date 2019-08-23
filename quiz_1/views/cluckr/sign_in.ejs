@@ -1,0 +1,25 @@
+<%- include("../../partials/header")%>
+
+<% if (username) {%>
+    <form action="/sign_out" method=POST>
+        <div class="card w-50">
+            <div class="card-body">
+                <h5 class="card-title">Logged in as: </h5>
+                <p><%= username%></p>
+                <button type="submit" class="btn btn-primary">Sign Out</button>
+            </div>
+        </div>
+    </form>
+<% } else {%>
+    <form action="/sign_in" method=POST>
+        <div class="card w-50">
+            <div class="card-body">
+                <h5 class="card-title">Sign In</h5>
+                <input type="text" name='username'>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+        </div>
+    </form>
+<% } %>
+
+<%- include("../../partials/footer")%>
